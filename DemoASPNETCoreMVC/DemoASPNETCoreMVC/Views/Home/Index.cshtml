@@ -1,0 +1,30 @@
+﻿@* @model DemoASPNETCoreMVC.Models.HomeModel;
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+    <div class="text-center">
+        <p><h2 style="color:red">@Model.Message</h2></p>
+    </div>
+</div>
+ *@
+
+<h3>Razor Syntax</h3>
+@{
+    var greeting = "Welcom to ASP.NET MVC Core";
+    var weekDay = DateTime.Now.DayOfWeek;
+}
+
+@{
+    var ISBNNo = "978-1-80056-718-4";
+}
+
+@{
+    var pro = new { ProductID = 1, ProductName = "Coffee" };
+    <p>ProductID: @pro.ProductID</p>
+    <p>ProductName: @pro.ProductName</p>
+    <p>@greeting</p>
+    <p>@weekDay</p>
+    <p>ISBN@(ISBNNo)</p>
+}
+

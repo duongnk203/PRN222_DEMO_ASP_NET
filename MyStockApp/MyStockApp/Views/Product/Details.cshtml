@@ -1,0 +1,9 @@
+﻿@model MyStockApp.Models.Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<h2>@Model.ProductName</h2>
+<p>Giá: @Model.UnitPrice</p>
+<a href="/product">Quay lại danh sách</a>
