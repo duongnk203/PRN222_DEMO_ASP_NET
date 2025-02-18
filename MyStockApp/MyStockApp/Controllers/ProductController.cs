@@ -32,5 +32,70 @@ namespace MyStockApp.Controllers
 
             return View(product);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Add(product);
+                context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(product);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = context.Products.Find(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id, Product product)
+        {
+            if (id != product.ProductId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                context.Update(product);
+                context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(product);
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            var product = context.Products.Find(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            context.Products.Remove(product);
+            context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
+
 }

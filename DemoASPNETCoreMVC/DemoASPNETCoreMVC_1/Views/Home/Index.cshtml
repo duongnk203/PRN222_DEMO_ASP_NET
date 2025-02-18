@@ -1,0 +1,36 @@
+﻿@* @model DemoASPNETCoreMVC_1.Models.HomeModel;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="text-center">
+        <p><h2 style="color:red">@Model.Message</h2></p>
+    </div>
+</div>
+
+ *@
+
+@* <h3>Razor Syntax</h3>
+@{
+    var greating = "Welcome to ASP.NET MVC Core";
+    var weekDay = DateTime.Now.DayOfWeek;
+}
+
+@{
+    var ISBNNo = "978-1-80056-718-4";
+}
+
+@{
+    var pro = new { ProductID = 1, ProductName = "Coffee" };
+    <p>ProductID: @pro.ProductID</p>
+    <p>ProductName: @pro.ProductName</p>
+    <p>@greating</p>
+    <p>@weekDay</p>
+    <p>ISBN@(ISBNNo)</p>
+}
+*@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@Html.ActionLink("Pass Data", "Index", "Home", new { Code = 100, Name = "David", Department = "Software" })

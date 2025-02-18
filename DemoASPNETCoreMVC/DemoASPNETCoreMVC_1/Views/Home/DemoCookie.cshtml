@@ -1,0 +1,8 @@
+﻿@if (Context.Request.Cookies.TryGetValue("MyCookie", out string cookieValue))
+{
+    <p>Giá trị của cookie "MyCookie" là: @cookieValue</p>
+}
+else
+{
+    <p>Cookie "MyCookie" không tồn tại.</p>
+}
